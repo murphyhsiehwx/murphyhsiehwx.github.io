@@ -19,9 +19,7 @@
       --paper-warm: #F5F0E8;
       --divider: rgba(184,147,90,0.25);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
       background: var(--paper);
@@ -30,558 +28,140 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* HERO */
     .hero {
-      background: #1C1C1C;
-      color: #fff;
-      text-align: center;
-      padding: 72px 24px 60px;
-      position: relative;
-      overflow: hidden;
+      background: #1C1C1C; color: #fff;
+      text-align: center; padding: 72px 24px 60px;
+      position: relative; overflow: hidden;
     }
-
     .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 39px,
-        rgba(255,255,255,0.022) 39px,
-        rgba(255,255,255,0.022) 40px
-      );
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.022) 39px, rgba(255,255,255,0.022) 40px);
       pointer-events: none;
     }
-
     .hero-kana {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
-      letter-spacing: 0.55em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      margin-bottom: 22px;
-      position: relative;
+      font-size: 11px; letter-spacing: 0.55em;
+      color: var(--gold-light); text-transform: uppercase;
+      margin-bottom: 22px; position: relative;
     }
-
     .hero h1 {
       font-family: 'Noto Serif TC', serif;
       font-size: clamp(1.7rem, 5vw, 2.6rem);
-      font-weight: 300;
-      letter-spacing: 0.4em;
-      line-height: 1.45;
-      margin-bottom: 16px;
-      position: relative;
+      font-weight: 300; letter-spacing: 0.4em; line-height: 1.45;
+      margin-bottom: 16px; position: relative;
     }
-
     .hero h1 span { color: var(--gold-light); }
+    .hero-sub { font-size: 12px; letter-spacing: 0.3em; color: rgba(255,255,255,0.4); position: relative; }
+    .hero-ornament { display: flex; align-items: center; gap: 18px; justify-content: center; margin: 30px 0 0; position: relative; }
+    .ornament-line { height: 1px; width: 64px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .ornament-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+    .ornament-dot { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
 
-    .hero-sub {
-      font-size: 12px;
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.4);
-      position: relative;
-    }
-
-    .hero-ornament {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      justify-content: center;
-      margin: 30px 0 0;
-      position: relative;
-    }
-
-    .ornament-line {
-      height: 1px;
-      width: 64px;
-      background: linear-gradient(90deg, transparent, var(--gold));
-    }
-
-    .ornament-line.r {
-      background: linear-gradient(90deg, var(--gold), transparent);
-    }
-
-    .ornament-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--gold);
-      transform: rotate(45deg);
-    }
-
-    .overview-wrap {
-      background: #fff;
-      border-bottom: 1px solid var(--divider);
-      padding: 52px 24px 56px;
-    }
-
-    .overview-inner {
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
+    /* OVERVIEW */
+    .overview-wrap { background: #fff; border-bottom: 1px solid var(--divider); padding: 52px 24px 56px; }
+    .overview-inner { max-width: 780px; margin: 0 auto; }
     .section-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
-      letter-spacing: 0.55em;
-      color: var(--gold);
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.55em;
+      color: var(--gold); text-transform: uppercase;
       margin-bottom: 40px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
+      display: flex; align-items: center; gap: 18px;
     }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--divider); }
 
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--divider);
-    }
-
-    .timeline {
-      display: flex;
-      position: relative;
-    }
-
+    .timeline { display: flex; position: relative; }
     .timeline::before {
-      content: '';
-      position: absolute;
-      top: 56px;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: var(--divider);
-      z-index: 0;
+      content: ''; position: absolute;
+      top: 56px; left: 10%; right: 10%;
+      height: 1px; background: var(--divider); z-index: 0;
     }
+    .tl-day { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 4px; }
+    .tl-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+    .tl-date { font-size: 10px; color: var(--ink-mute); letter-spacing: 0.1em; margin-bottom: 10px; text-align: center; }
+    .tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: #fff; margin-bottom: 12px; }
+    .tl-weather { font-size: 18px; margin-bottom: 4px; }
+    .tl-temp { font-size: 10px; color: var(--ink-mute); margin-bottom: 8px; text-align: center; white-space: nowrap; }
+    .tl-label { font-size: 12px; color: var(--ink-soft); text-align: center; line-height: 1.5; font-weight: 500; }
+    .tl-sub { font-size: 10.5px; color: var(--ink-mute); text-align: center; line-height: 1.55; margin-top: 3px; }
 
-    .tl-day {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-      padding: 0 4px;
-    }
+    /* MAIN */
+    .guide-body { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
 
-    .tl-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .tl-date {
-      font-size: 10px;
-      color: var(--ink-mute);
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .tl-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      background: #fff;
-      margin-bottom: 12px;
-    }
-
-    .tl-weather {
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .tl-temp {
-      font-size: 10px;
-      color: var(--ink-mute);
-      margin-bottom: 8px;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .tl-label {
-      font-size: 12px;
-      color: var(--ink-soft);
-      text-align: center;
-      line-height: 1.5;
-      font-weight: 500;
-    }
-
-    .tl-sub {
-      font-size: 10.5px;
-      color: var(--ink-mute);
-      text-align: center;
-      line-height: 1.55;
-      margin-top: 3px;
-    }
-
-    .guide-body {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 60px 24px 100px;
-    }
-
-    .day-card {
-      margin-bottom: 64px;
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 0 36px;
-    }
-
-    .day-meta {
-      text-align: right;
-      padding-right: 36px;
-      border-right: 1px solid var(--divider);
-      padding-top: 4px;
-    }
-
-    .day-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.4rem;
-      font-weight: 300;
-      color: var(--gold);
-      line-height: 1;
-      display: block;
-    }
-
-    .day-date {
-      font-size: 10.5px;
-      color: var(--ink-mute);
-      letter-spacing: 0.14em;
-      margin-top: 6px;
-      white-space: nowrap;
-    }
-
-    .day-weather-badge {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 2px;
-    }
-
+    /* DAY CARD */
+    .day-card { margin-bottom: 64px; display: grid; grid-template-columns: 80px 1fr; gap: 0 36px; }
+    .day-meta { text-align: right; padding-right: 36px; border-right: 1px solid var(--divider); padding-top: 4px; }
+    .day-num { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 300; color: var(--gold); line-height: 1; display: block; }
+    .day-date { font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.14em; margin-top: 6px; white-space: nowrap; }
+    .day-weather-badge { margin-top: 10px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
     .day-weather-icon { font-size: 20px; }
-
-    .day-temp {
-      font-size: 10px;
-      color: var(--ink-mute);
-      white-space: nowrap;
-    }
+    .day-temp { font-size: 10px; color: var(--ink-mute); white-space: nowrap; }
 
     .day-inner { padding-bottom: 8px; }
+    .day-title { font-family: 'Noto Serif TC', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.07em; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--divider); }
 
-    .day-title {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 1.05rem;
-      font-weight: 400;
-      letter-spacing: 0.07em;
-      margin-bottom: 22px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .item-row {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 15px;
-      align-items: flex-start;
-    }
-
-    .item-icon {
-      width: 30px;
-      height: 30px;
-      flex-shrink: 0;
-      background: var(--paper-warm);
-      border: 1px solid var(--divider);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1px;
-    }
-
-    .item-icon svg {
-      width: 13px;
-      height: 13px;
-      stroke: var(--gold);
-      fill: none;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
+    /* ITEMS */
+    .item-row { display: flex; gap: 14px; margin-bottom: 15px; align-items: flex-start; }
+    .item-icon { width: 30px; height: 30px; flex-shrink: 0; background: var(--paper-warm); border: 1px solid var(--divider); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .item-icon svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .item-body { flex: 1; }
-
-    .item-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      line-height: 1.5;
-    }
-
-    .item-title a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(184,147,90,0.4);
-      transition: 0.2s;
-    }
-
+    .item-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+    .item-title a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.4); transition: 0.2s; }
     .item-title a:hover { border-color: var(--gold); }
-
-    .item-desc {
-      font-size: 13px;
-      color: var(--ink-mute);
-      margin-top: 3px;
-      line-height: 1.7;
-    }
-
-    .item-desc a {
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: 0.2s;
-    }
-
+    .item-desc { font-size: 13px; color: var(--ink-mute); margin-top: 3px; line-height: 1.7; }
+    .item-desc a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.2s; }
     .item-desc a:hover { border-color: var(--gold-light); }
 
-    .rest-block {
-      margin: 20px 0 4px;
-      border: 1px solid var(--divider);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .rest-block-header {
-      background: var(--paper-warm);
-      padding: 8px 16px;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      font-family: 'Cormorant Garamond', serif;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--divider);
-    }
-
+    /* RESTAURANT BLOCK */
+    .rest-block { margin: 20px 0 4px; border: 1px solid var(--divider); border-radius: 4px; overflow: hidden; }
+    .rest-block-header { background: var(--paper-warm); padding: 8px 16px; font-size: 11px; letter-spacing: 0.2em; color: var(--gold); font-family: 'Cormorant Garamond', serif; text-transform: uppercase; border-bottom: 1px solid var(--divider); }
     .rest-list { padding: 4px 0; }
-
-    .rest-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 16px;
-      border-bottom: 1px solid var(--divider);
-      transition: background 0.15s;
-    }
-
+    .rest-item { display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-bottom: 1px solid var(--divider); transition: background 0.15s; }
     .rest-item:last-child { border-bottom: none; }
     .rest-item:hover { background: var(--paper-warm); }
-
-    .rest-tag {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      font-weight: 500;
-    }
-
-    .tag-confirmed {
-      background: #EAF0E8;
-      color: #3B6324;
-      border: 1px solid #b8d4a8;
-    }
-
-    .tag-option {
-      background: #F0EDE8;
-      color: #7A6040;
-      border: 1px solid #ddd0be;
-    }
-
-    .rest-name {
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--ink);
-      flex: 1;
-    }
-
-    .rest-name a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(184,147,90,0.35);
-    }
-
+    .rest-tag { font-size: 10px; padding: 2px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; font-weight: 500; }
+    .tag-confirmed { background: #EAF0E8; color: #3B6324; border: 1px solid #b8d4a8; }
+    .tag-option    { background: #F0EDE8; color: #7A6040; border: 1px solid #ddd0be; }
+    .rest-name { font-size: 13.5px; font-weight: 500; color: var(--ink); flex: 1; }
+    .rest-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.35); }
     .rest-name a:hover { border-color: var(--gold); }
+    .rest-info { font-size: 12px; color: var(--ink-mute); white-space: nowrap; flex-shrink: 0; }
 
-    .rest-info {
-      font-size: 12px;
-      color: var(--ink-mute);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
+    /* PHOTO */
+    .day-photo { margin-top: 24px; height: 220px; border-radius: 2px; overflow: hidden; position: relative; background: #ccc; }
+    .day-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88) brightness(0.95); transition: transform 0.6s ease, filter 0.4s; }
+    .day-photo:hover img { transform: scale(1.04); filter: saturate(1) brightness(1); }
+    .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.62)); color: rgba(255,255,255,0.9); font-size: 11px; letter-spacing: 0.12em; padding: 28px 14px 10px; }
 
-    .day-photo {
-      margin-top: 24px;
-      height: 220px;
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
-      background: #ccc;
-    }
+    /* NARRATIVE */
+    .day-narrative { font-size: 13px; color: var(--ink-soft); margin-top: 18px; line-height: 1.9; padding: 14px 18px; background: var(--paper-warm); border-left: 2px solid var(--gold-light); border-radius: 0 2px 2px 0; }
 
-    .day-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: saturate(0.88) brightness(0.95);
-      transition: transform 0.6s ease, filter 0.4s;
-    }
-
-    .day-photo:hover img {
-      transform: scale(1.04);
-      filter: saturate(1) brightness(1);
-    }
-
-    .photo-day2 img {
-      object-position: center 38%;
-    }
-
-    .photo-day3 img {
-      object-position: center center;
-    }
-
-    .photo-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.62));
-      color: rgba(255,255,255,0.9);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      padding: 28px 14px 10px;
-    }
-
-    .day-narrative {
-      font-size: 13px;
-      color: var(--ink-soft);
-      margin-top: 18px;
-      line-height: 1.9;
-      padding: 14px 18px;
-      background: var(--paper-warm);
-      border-left: 2px solid var(--gold-light);
-      border-radius: 0 2px 2px 0;
-    }
-
-    .note-block {
-      margin-top: 14px;
-      padding: 12px 16px;
-      background: #F3F7FF;
-      border-left: 2px solid #7A9FCC;
-      border-radius: 0 2px 2px 0;
-      font-size: 12.5px;
-      color: #3A5577;
-      line-height: 1.75;
-    }
-
+    /* NOTE */
+    .note-block { margin-top: 14px; padding: 12px 16px; background: #F3F7FF; border-left: 2px solid #7A9FCC; border-radius: 0 2px 2px 0; font-size: 12.5px; color: #3A5577; line-height: 1.75; }
     .note-block a { color: #3A5577; }
 
-    .bar-guide {
-      background: #1C1C1C;
-      border-radius: 2px;
-      padding: 44px 48px;
-      margin-top: 72px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .bar-guide::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--kyoto-red), var(--gold));
-    }
-
-    .bar-guide-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 11px;
-      letter-spacing: 0.55em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .bar-guide h3 {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 32px;
-      letter-spacing: 0.1em;
-    }
-
-    .bar-item {
-      border-left: 1px solid var(--gold);
-      padding-left: 22px;
-      margin-bottom: 26px;
-    }
-
+    /* BAR GUIDE */
+    .bar-guide { background: #1C1C1C; border-radius: 2px; padding: 44px 48px; margin-top: 72px; position: relative; overflow: hidden; }
+    .bar-guide::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--kyoto-red), var(--gold)); }
+    .bar-guide-label { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 0.55em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .bar-guide h3 { font-family: 'Noto Serif TC', serif; font-size: 1.15rem; font-weight: 300; color: #fff; margin-bottom: 32px; letter-spacing: 0.1em; }
+    .bar-item { border-left: 1px solid var(--gold); padding-left: 22px; margin-bottom: 26px; }
     .bar-item:last-child { margin-bottom: 0; }
-
-    .bar-name {
-      font-size: 14px;
-      font-weight: 500;
-      color: #E8D5B5;
-      margin-bottom: 7px;
-    }
-
-    .bar-name a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(184,147,90,0.4);
-      transition: 0.2s;
-    }
-
+    .bar-name { font-size: 14px; font-weight: 500; color: #E8D5B5; margin-bottom: 7px; }
+    .bar-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.4); transition: 0.2s; }
     .bar-name a:hover { border-color: var(--gold-light); }
+    .bar-desc { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.75; }
 
-    .bar-desc {
-      font-size: 13px;
-      color: rgba(255,255,255,0.48);
-      line-height: 1.75;
-    }
+    /* FOOTER */
+    .footer { text-align: center; padding: 32px 24px 48px; font-size: 11px; letter-spacing: 0.25em; color: var(--ink-mute); border-top: 1px solid var(--divider); }
 
-    .footer {
-      text-align: center;
-      padding: 32px 24px 48px;
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      color: var(--ink-mute);
-      border-top: 1px solid var(--divider);
-    }
-
+    /* RESPONSIVE */
     @media (max-width: 640px) {
       .timeline { flex-wrap: wrap; }
       .timeline::before { display: none; }
       .tl-day { flex: 0 0 33.33%; margin-bottom: 24px; }
       .day-card { grid-template-columns: 1fr; gap: 0; }
-      .day-meta {
-        text-align: left;
-        border-right: none;
-        border-bottom: 1px solid var(--divider);
-        padding-right: 0;
-        padding-bottom: 12px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: baseline;
-        gap: 14px;
-      }
+      .day-meta { text-align: left; border-right: none; border-bottom: 1px solid var(--divider); padding-right: 0; padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: baseline; gap: 14px; }
       .day-num { font-size: 2.2rem; }
       .day-weather-badge { flex-direction: row; align-items: center; }
       .bar-guide { padding: 32px 22px; }
@@ -594,7 +174,7 @@
 <header class="hero">
   <div class="hero-kana">Kansai Golden Week 2026</div>
   <h1>關西黃金週<br><span>京都深度五日</span></h1>
-  <div class="hero-sub">4 / 30 &nbsp;—&nbsp; 5 / 4 &nbsp;·&nbsp; Adult-Style Travel</div>
+  <div class="hero-sub">4 / 30  —  5 / 4  ·  Boutique & Slow Travel</div>
   <div class="hero-ornament">
     <div class="ornament-line"></div>
     <div class="ornament-dot"></div>
@@ -658,7 +238,6 @@
 <main class="guide-body">
   <div class="section-label">Day by Day Itinerary</div>
 
-  <!-- DAY 01 -->
   <div class="day-card">
     <div class="day-meta">
       <span class="day-num">01</span>
@@ -700,23 +279,17 @@
         <div class="rest-list">
           <div class="rest-item">
             <span class="rest-tag tag-option">候選</span>
-            <span class="rest-name">
-              <a href="https://www.google.com/maps/search/夢み家+大阪焼き+京都" target="_blank" rel="noopener noreferrer">Yumemiya 夢み家</a>　大阪燒
-            </span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/夢み家+大阪焼き+京都" target="_blank" rel="noopener noreferrer">Yumemiya 夢み家</a>　大阪燒</span>
             <span class="rest-info">〜 23:00</span>
           </div>
           <div class="rest-item">
             <span class="rest-tag tag-option">候選</span>
-            <span class="rest-name">
-              <a href="https://maps.app.goo.gl/CfTbgsfxj7AJ3VR46" target="_blank" rel="noopener noreferrer">Tsujiya Kyotoekihachijoguchiten 京都 炭火串焼つじや 京都駅八条口店</a>　燒鳥
-            </span>
+            <span class="rest-name"><a href="https://maps.app.goo.gl/CfTbgsfxj7AJ3VR46" target="_blank" rel="noopener noreferrer">炭火串焼つじや 八条口店</a>　燒鳥</span>
             <span class="rest-info">〜 23:00</span>
           </div>
           <div class="rest-item">
             <span class="rest-tag tag-option">候選</span>
-            <span class="rest-name">
-              <a href="https://www.google.com/maps/search/Yakitori+Tsujiya+京都" target="_blank" rel="noopener noreferrer">Yakitori Tsujiya</a>　燒鳥（較遠）
-            </span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/Yakitori+Tsujiya+京都" target="_blank" rel="noopener noreferrer">Yakitori Tsujiya</a>　燒鳥（較遠）</span>
             <span class="rest-info">〜 22:00</span>
           </div>
           <div class="rest-item">
@@ -736,15 +309,12 @@
           src="https://images.unsplash.com/photo-1674388891031-84a63b386947?w=900&auto=format&fit=crop&q=80"
           alt="京都夜景"
           onerror="this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&auto=format&fit=crop&q=80'"
-          loading="lazy"
-          decoding="async"
         >
         <div class="photo-caption">京都 · 入夜抵達</div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 02 -->
   <div class="day-card">
     <div class="day-meta">
       <span class="day-num">02</span>
@@ -760,19 +330,15 @@
       <div class="item-row">
         <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
         <div class="item-body">
-          <div class="item-title">
-            早午餐：<a href="https://www.google.com/maps/search/Blue+Bottle+Coffee+京都" target="_blank" rel="noopener noreferrer">Blue Bottle Coffee 京都</a>
-          </div>
-          <div class="item-desc">08:00 開門，京町家改裝空間，附近可步行至錦天滿宮、八坂神社一帶晃晃。</div>
+          <div class="item-title">早午餐：<a href="https://maps.app.goo.gl/kwD1GPB2iPsLpi2c9" target="_blank" rel="noopener noreferrer">Blue Bottle Coffee 京都</a></div>
+          <div class="item-desc">09:00 開門，由百年京町家改建，空間極美。推薦喝完咖啡後可至鄰近的南禪寺或蹴上傾斜鐵道一帶散步。</div>
         </div>
       </div>
 
       <div class="item-row">
         <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
         <div class="item-body">
-          <div class="item-title">
-            午餐：<a href="https://www.google.com/maps/search/大力邸+京都+壽喜燒" target="_blank" rel="noopener noreferrer">大力邸</a>　和牛壽喜燒
-          </div>
+          <div class="item-title">午餐：<a href="https://www.google.com/maps/search/大力邸+京都+壽喜燒" target="_blank" rel="noopener noreferrer">大力邸</a>　和牛壽喜燒</div>
           <div class="item-desc">11:30 開門，稍早抵達排隊，雨天人潮相對少是好機會。</div>
         </div>
       </div>
@@ -780,10 +346,8 @@
       <div class="item-row">
         <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
         <div class="item-body">
-          <div class="item-title">
-            13:30 <a href="https://maps.app.goo.gl/MxSmpmhL9z5ruarV6" target="_blank" rel="noopener noreferrer">平等寺（狗勾神社）</a>
-          </div>
-          <div class="item-desc">因幡藥師，繪馬上有可愛柴犬圖案，京都人暱稱「狗勾神社」，必拍。</div>
+          <div class="item-title">13:30 <a href="https://maps.app.goo.gl/MxSmpmhL9z5ruarV6" target="_blank" rel="noopener noreferrer">因幡堂（平等寺）</a></div>
+          <div class="item-desc">供奉著藥師如來，這裡有非常可愛的文鳥、貓咪與柴犬圖案御守與繪馬，是療癒的隱藏版景點。</div>
         </div>
       </div>
 
@@ -791,10 +355,7 @@
         <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
         <div class="item-body">
           <div class="item-title">四條河原町 逛街</div>
-          <div class="item-desc">
-            <a href="https://www.google.com/maps/search/Kyoto+BAL" target="_blank" rel="noopener noreferrer">Kyoto BAL</a>、
-            <a href="https://www.google.com/maps/search/藤井大丸+京都" target="_blank" rel="noopener noreferrer">藤井大丸</a>，雨天室內購物最合適。
-          </div>
+          <div class="item-desc"><a href="https://www.google.com/maps/search/Kyoto+BAL" target="_blank" rel="noopener noreferrer">Kyoto BAL</a>、<a href="https://www.google.com/maps/search/藤井大丸+京都" target="_blank" rel="noopener noreferrer">藤井大丸</a>，雨天室內購物最合適。</div>
         </div>
       </div>
 
@@ -803,27 +364,23 @@
         <div class="rest-list">
           <div class="rest-item">
             <span class="rest-tag tag-confirmed">✓ 已訂位</span>
-            <span class="rest-name">
-              <a href="https://www.google.com/maps/search/Gion+Yakiniku+Gyusho+Shin+京都" target="_blank" rel="noopener noreferrer">Gion Yakiniku Gyusho Shin　祇園牛燒肉</a>
-            </span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/Gion+Yakiniku+Gyusho+Shin+京都" target="_blank" rel="noopener noreferrer">Gion Yakiniku Gyusho Shin　祇園牛燒肉</a></span>
             <span class="rest-info">18:00 入座</span>
           </div>
         </div>
       </div>
 
-      <div class="day-photo photo-day2">
+      <div class="day-photo">
         <img
-          src="https://unsplash.com/photos/MsMISAIe8Qw/download?force=true&w=1200"
-          alt="京都雨天街道與撐傘行人"
-          loading="lazy"
-          decoding="async"
+          src="https://images.unsplash.com/photo-MsMISAIe8Qw?w=900&auto=format&fit=crop&q=80"
+          alt="雨中撐傘漫步的街道"
+          onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&auto=format&fit=crop&q=80'"
         >
-        <div class="photo-caption">祇園 · 雨中散步</div>
+        <div class="photo-caption">漫步京都 · 雨中即景</div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 03 -->
   <div class="day-card">
     <div class="day-meta">
       <span class="day-num">03</span>
@@ -848,10 +405,7 @@
         <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
         <div class="item-body">
           <div class="item-title">宇治散步・抹茶體驗</div>
-          <div class="item-desc">
-            <a href="https://www.google.com/maps/search/中村藤吉本店+宇治" target="_blank" rel="noopener noreferrer">中村藤吉本店</a>（早點去避開排隊）、
-            平等院鳳凰堂、宇治上神社，沿宇治川步行非常舒適。
-          </div>
+          <div class="item-desc"><a href="https://www.google.com/maps/search/中村藤吉本店+宇治" target="_blank" rel="noopener noreferrer">中村藤吉本店</a>（早點去避開排隊）、平等院鳳凰堂、宇治上神社，沿宇治川步行非常舒適。</div>
         </div>
       </div>
 
@@ -870,14 +424,13 @@
         🍶 宇治 ←→ 伏見搭近鐵約 15 分鐘，不算太遠。伏見補充：月桂冠大倉紀念館清酒試飲＋十石舟遊覧水路。
       </div>
 
-      <div class="day-photo photo-day3">
+      <div class="day-photo">
         <img
-          src="https://unsplash.com/photos/W1mCZiK3g-A/download?force=true&w=1200"
-          alt="宇治岸邊屋舍與山景"
-          loading="lazy"
-          decoding="async"
+          src="https://images.unsplash.com/photo-wJvUBkLU0pA?w=900&auto=format&fit=crop&q=80"
+          alt="日間乘船遊覽"
+          onerror="this.src='https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=900&auto=format&fit=crop&q=80'"
         >
-        <div class="photo-caption">宇治 · 河岸散步</div>
+        <div class="photo-caption">宇治 · 水路風光</div>
       </div>
 
       <div class="day-narrative">
@@ -886,7 +439,6 @@
     </div>
   </div>
 
-  <!-- DAY 04 -->
   <div class="day-card">
     <div class="day-meta">
       <span class="day-num">04</span>
@@ -911,7 +463,7 @@
         <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M3 17l3-3 4 4 4-8 4 4"/><path d="M21 21H3"/></svg></div>
         <div class="item-body">
           <div class="item-title">天橋立 · 伊根舟屋</div>
-          <div class="item-desc">登上傘松公園展望台，倒看天橋立，松林彷彿騰空於海上（日本三景之一）。伊根舟屋依水而建，靜謐迷人。</div>
+          <div class="item-desc">登上傘松公園展望台，倒看天橋立，松林彷彿騰空於海上（日本三景之一）。伊根舟屋依水建，靜謐迷人。</div>
         </div>
       </div>
 
@@ -923,13 +475,42 @@
         </div>
       </div>
 
+      <div class="rest-block">
+        <div class="rest-block-header">午餐（行程中）・晚餐選項</div>
+        <div class="rest-list">
+          <div class="rest-item">
+            <span class="rest-tag tag-option">午餐</span>
+            <span class="rest-name">天橋立・伊根當地海鮮定食　依行程地點安排</span>
+            <span class="rest-info">在地食堂</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">晚餐</span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/京都勝牛+八条口" target="_blank" rel="noopener noreferrer">京都勝牛 八條口店</a>　炸牛排</span>
+            <span class="rest-info">車站正對面</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">輕鬆</span>
+            <span class="rest-name">疲憊時：拉麵 or 烏冬　車站周邊均可</span>
+            <span class="rest-info"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-photo">
+        <img
+          src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=900&auto=format&fit=crop&q=80"
+          alt="天橋立 日本三景"
+          onerror="this.src='https://images.unsplash.com/photo-1480796927426-f609979314bd?w=900&auto=format&fit=crop&q=80'"
+        >
+        <div class="photo-caption">天橋立 · 日本三景之一</div>
+      </div>
+
       <div class="day-narrative">
-        今天是整趟旅程最開闊的一天。海風、舟屋與遠山的層次感，會讓京都的城市節奏暫時慢下來。這天的天氣最好，好好珍惜。
+        天橋立如翠綠松林橫跨海灣，在觀景台倒著看，松林化為騰空之橋，絕妙難忘。伊根的舟屋依水而建，木造民家倒映水中，寧靜到讓人不想離開。這天的天氣最好，好好珍惜。
       </div>
     </div>
   </div>
 
-  <!-- DAY 05 -->
   <div class="day-card">
     <div class="day-meta">
       <span class="day-num">05</span>
@@ -971,8 +552,6 @@
           src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&auto=format&fit=crop&q=80"
           alt="機場離境"
           onerror="this.src='https://images.unsplash.com/photo-1483450388369-9ed95738483c?w=900&auto=format&fit=crop&q=80'"
-          loading="lazy"
-          decoding="async"
         >
         <div class="photo-caption">關西機場 KIX · 13:10 起飛</div>
       </div>
@@ -982,25 +561,20 @@
   <div class="bar-guide">
     <div class="bar-guide-label">After Hours</div>
     <h3>深夜酒館指南</h3>
-
     <div class="bar-item">
-      <div class="bar-name">
-        <a href="https://www.google.com/maps/search/Sake+Bar+Yoramu+京都" target="_blank" rel="noopener noreferrer">Sake Bar Yoramu</a>
-      </div>
+      <div class="bar-name"><a href="https://www.google.com/maps/search/Sake+Bar+Yoramu+京都" target="_blank" rel="noopener noreferrer">Sake Bar Yoramu</a></div>
       <div class="bar-desc">以色列老闆精選高品質清酒，不提供調酒，是一場跨越國界的清酒深度旅程。適合 Day 1 抵達後或 Day 2 晚餐後造訪。</div>
     </div>
-
     <div class="bar-item">
-      <div class="bar-name">
-        <a href="https://www.google.com/maps/search/Kyoto+Beer+Lab" target="_blank" rel="noopener noreferrer">Kyoto Beer Lab</a>
-      </div>
+      <div class="bar-name"><a href="https://www.google.com/maps/search/Kyoto+Beer+Lab" target="_blank" rel="noopener noreferrer">Kyoto Beer Lab</a></div>
       <div class="bar-desc">氣氛放鬆的在地精釀吧，以抹茶、焙茶等京都特色原料釀造，最適合 Day 3 宇治回來後卸下疲憊。</div>
     </div>
   </div>
+
 </main>
 
 <footer class="footer">
-  2026 &nbsp;·&nbsp; KANSAI GOLDEN WEEK &nbsp;·&nbsp; 關西黃金週深度旅行手冊
+  2026  ·  KANSAI GOLDEN WEEK  ·  關西黃金週深度旅行手冊
 </footer>
 
 </body>
