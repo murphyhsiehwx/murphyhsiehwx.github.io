@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 關西黃金週・京都深度五日</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --kyoto-red: #8B2E2E;
+      --gold: #B8935A;
+      --gold-light: #D4AE7A;
+      --ink: #1C1C1C;
+      --ink-soft: #4A4A4A;
+      --ink-mute: #888;
+      --paper: #FAF8F4;
+      --paper-warm: #F5F0E8;
+      --divider: rgba(184,147,90,0.25);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HERO */
+    .hero {
+      background: #1C1C1C; color: #fff;
+      text-align: center; padding: 72px 24px 60px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.022) 39px, rgba(255,255,255,0.022) 40px);
+      pointer-events: none;
+    }
+    .hero-kana {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; letter-spacing: 0.55em;
+      color: var(--gold-light); text-transform: uppercase;
+      margin-bottom: 22px; position: relative;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(1.7rem, 5vw, 2.6rem);
+      font-weight: 300; letter-spacing: 0.4em; line-height: 1.45;
+      margin-bottom: 16px; position: relative;
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero-sub { font-size: 12px; letter-spacing: 0.3em; color: rgba(255,255,255,0.4); position: relative; }
+    .hero-ornament { display: flex; align-items: center; gap: 18px; justify-content: center; margin: 30px 0 0; position: relative; }
+    .ornament-line { height: 1px; width: 64px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .ornament-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+    .ornament-dot { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+
+    /* OVERVIEW */
+    .overview-wrap { background: #fff; border-bottom: 1px solid var(--divider); padding: 52px 24px 56px; }
+    .overview-inner { max-width: 780px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; letter-spacing: 0.55em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 40px;
+      display: flex; align-items: center; gap: 18px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--divider); }
+
+    .timeline { display: flex; position: relative; }
+    .timeline::before {
+      content: ''; position: absolute;
+      top: 56px; left: 10%; right: 10%;
+      height: 1px; background: var(--divider); z-index: 0;
+    }
+    .tl-day { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 4px; }
+    .tl-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+    .tl-date { font-size: 10px; color: var(--ink-mute); letter-spacing: 0.1em; margin-bottom: 10px; text-align: center; }
+    .tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: #fff; margin-bottom: 12px; }
+    .tl-weather { font-size: 18px; margin-bottom: 4px; }
+    .tl-temp { font-size: 10px; color: var(--ink-mute); margin-bottom: 8px; text-align: center; white-space: nowrap; }
+    .tl-label { font-size: 12px; color: var(--ink-soft); text-align: center; line-height: 1.5; font-weight: 500; }
+    .tl-sub { font-size: 10.5px; color: var(--ink-mute); text-align: center; line-height: 1.55; margin-top: 3px; }
+
+    /* MAIN */
+    .guide-body { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
+
+    /* DAY CARD */
+    .day-card { margin-bottom: 64px; display: grid; grid-template-columns: 80px 1fr; gap: 0 36px; }
+    .day-meta { text-align: right; padding-right: 36px; border-right: 1px solid var(--divider); padding-top: 4px; }
+    .day-num { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 300; color: var(--gold); line-height: 1; display: block; }
+    .day-date { font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.14em; margin-top: 6px; white-space: nowrap; }
+    .day-weather-badge { margin-top: 10px; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+    .day-weather-icon { font-size: 20px; }
+    .day-temp { font-size: 10px; color: var(--ink-mute); white-space: nowrap; }
+
+    .day-inner { padding-bottom: 8px; }
+    .day-title { font-family: 'Noto Serif TC', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.07em; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--divider); }
+
+    /* ITEMS */
+    .item-row { display: flex; gap: 14px; margin-bottom: 15px; align-items: flex-start; }
+    .item-icon { width: 30px; height: 30px; flex-shrink: 0; background: var(--paper-warm); border: 1px solid var(--divider); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .item-icon svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .item-body { flex: 1; }
+    .item-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+    .item-title a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.4); transition: 0.2s; }
+    .item-title a:hover { border-color: var(--gold); }
+    .item-desc { font-size: 13px; color: var(--ink-mute); margin-top: 3px; line-height: 1.7; }
+    .item-desc a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.2s; }
+    .item-desc a:hover { border-color: var(--gold-light); }
+
+    /* RESTAURANT BLOCK */
+    .rest-block { margin: 20px 0 4px; border: 1px solid var(--divider); border-radius: 4px; overflow: hidden; }
+    .rest-block-header { background: var(--paper-warm); padding: 8px 16px; font-size: 11px; letter-spacing: 0.2em; color: var(--gold); font-family: 'Cormorant Garamond', serif; text-transform: uppercase; border-bottom: 1px solid var(--divider); }
+    .rest-list { padding: 4px 0; }
+    .rest-item { display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-bottom: 1px solid var(--divider); transition: background 0.15s; }
+    .rest-item:last-child { border-bottom: none; }
+    .rest-item:hover { background: var(--paper-warm); }
+    .rest-tag { font-size: 10px; padding: 2px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; font-weight: 500; }
+    .tag-confirmed { background: #EAF0E8; color: #3B6324; border: 1px solid #b8d4a8; }
+    .tag-option    { background: #F0EDE8; color: #7A6040; border: 1px solid #ddd0be; }
+    .rest-name { font-size: 13.5px; font-weight: 500; color: var(--ink); flex: 1; }
+    .rest-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.35); }
+    .rest-name a:hover { border-color: var(--gold); }
+    .rest-info { font-size: 12px; color: var(--ink-mute); white-space: nowrap; flex-shrink: 0; }
+
+    /* PHOTO */
+    .day-photo { margin-top: 24px; height: 220px; border-radius: 2px; overflow: hidden; position: relative; background: #ccc; }
+    .day-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88) brightness(0.95); transition: transform 0.6s ease, filter 0.4s; }
+    .day-photo:hover img { transform: scale(1.04); filter: saturate(1) brightness(1); }
+    .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.62)); color: rgba(255,255,255,0.9); font-size: 11px; letter-spacing: 0.12em; padding: 28px 14px 10px; }
+
+    /* NARRATIVE */
+    .day-narrative { font-size: 13px; color: var(--ink-soft); margin-top: 18px; line-height: 1.9; padding: 14px 18px; background: var(--paper-warm); border-left: 2px solid var(--gold-light); border-radius: 0 2px 2px 0; }
+
+    /* NOTE */
+    .note-block { margin-top: 14px; padding: 12px 16px; background: #F3F7FF; border-left: 2px solid #7A9FCC; border-radius: 0 2px 2px 0; font-size: 12.5px; color: #3A5577; line-height: 1.75; }
+    .note-block a { color: #3A5577; }
+
+    /* BAR GUIDE */
+    .bar-guide { background: #1C1C1C; border-radius: 2px; padding: 44px 48px; margin-top: 72px; position: relative; overflow: hidden; }
+    .bar-guide::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--kyoto-red), var(--gold)); }
+    .bar-guide-label { font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 0.55em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .bar-guide h3 { font-family: 'Noto Serif TC', serif; font-size: 1.15rem; font-weight: 300; color: #fff; margin-bottom: 32px; letter-spacing: 0.1em; }
+    .bar-item { border-left: 1px solid var(--gold); padding-left: 22px; margin-bottom: 26px; }
+    .bar-item:last-child { margin-bottom: 0; }
+    .bar-name { font-size: 14px; font-weight: 500; color: #E8D5B5; margin-bottom: 7px; }
+    .bar-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(184,147,90,0.4); transition: 0.2s; }
+    .bar-name a:hover { border-color: var(--gold-light); }
+    .bar-desc { font-size: 13px; color: rgba(255,255,255,0.48); line-height: 1.75; }
+
+    /* FOOTER */
+    .footer { text-align: center; padding: 32px 24px 48px; font-size: 11px; letter-spacing: 0.25em; color: var(--ink-mute); border-top: 1px solid var(--divider); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .timeline { flex-wrap: wrap; }
+      .timeline::before { display: none; }
+      .tl-day { flex: 0 0 33.33%; margin-bottom: 24px; }
+      .day-card { grid-template-columns: 1fr; gap: 0; }
+      .day-meta { text-align: left; border-right: none; border-bottom: 1px solid var(--divider); padding-right: 0; padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: baseline; gap: 14px; }
+      .day-num { font-size: 2.2rem; }
+      .day-weather-badge { flex-direction: row; align-items: center; }
+      .bar-guide { padding: 32px 22px; }
+      .rest-info { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-kana">Kansai Golden Week 2026</div>
+  <h1>關西黃金週<br><span>京都深度五日</span></h1>
+  <div class="hero-sub">4 / 30 &nbsp;—&nbsp; 5 / 4 &nbsp;·&nbsp; Adult-Style Travel</div>
+  <div class="hero-ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-dot"></div>
+    <div class="ornament-line r"></div>
+  </div>
+</header>
+
+<!-- 5-DAY OVERVIEW -->
+<section class="overview-wrap">
+  <div class="overview-inner">
+    <div class="section-label">Five-Day Overview</div>
+    <div class="timeline">
+      <div class="tl-day">
+        <div class="tl-num">01</div>
+        <div class="tl-date">4/30 四</div>
+        <div class="tl-dot"></div>
+        <div class="tl-weather">🌧️</div>
+        <div class="tl-temp">15–22°C</div>
+        <div class="tl-label">抵達京都</div>
+        <div class="tl-sub">KIX → 京都<br>晚餐・藥妝</div>
+      </div>
+      <div class="tl-day">
+        <div class="tl-num">02</div>
+        <div class="tl-date">5/01 五</div>
+        <div class="tl-dot"></div>
+        <div class="tl-weather">🌧️</div>
+        <div class="tl-temp">14–20°C</div>
+        <div class="tl-label">神社・購物</div>
+        <div class="tl-sub">藍瓶咖啡<br>祇園燒肉✓</div>
+      </div>
+      <div class="tl-day">
+        <div class="tl-num">03</div>
+        <div class="tl-date">5/02 六</div>
+        <div class="tl-dot"></div>
+        <div class="tl-weather">🌥️</div>
+        <div class="tl-temp">13–21°C</div>
+        <div class="tl-label">宇治・伏見</div>
+        <div class="tl-sub">抹茶・清酒<br>or 鴨川散步</div>
+      </div>
+      <div class="tl-day">
+        <div class="tl-num">04</div>
+        <div class="tl-date">5/03 日</div>
+        <div class="tl-dot"></div>
+        <div class="tl-weather">🌤️</div>
+        <div class="tl-temp">12–20°C</div>
+        <div class="tl-label">海之京都</div>
+        <div class="tl-sub">天橋立<br>伊根舟屋</div>
+      </div>
+      <div class="tl-day">
+        <div class="tl-num">05</div>
+        <div class="tl-date">5/04 一</div>
+        <div class="tl-dot"></div>
+        <div class="tl-weather">✈️</div>
+        <div class="tl-temp">返程日</div>
+        <div class="tl-label">京都→大阪</div>
+        <div class="tl-sub">13:10<br>班機起飛</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL -->
+<main class="guide-body">
+  <div class="section-label">Day by Day Itinerary</div>
+
+  <!-- DAY 01 -->
+  <div class="day-card">
+    <div class="day-meta">
+      <span class="day-num">01</span>
+      <div class="day-date">4/30 THU</div>
+      <div class="day-weather-badge">
+        <span class="day-weather-icon">🌧️</span>
+        <span class="day-temp">15–22°C</span>
+      </div>
+    </div>
+    <div class="day-inner">
+      <div class="day-title">抵達京都・首夜微醺</div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">14:20 台灣出發 → 18:05 抵達 KIX</div>
+          <div class="item-desc">雨天入境記得備傘，入境大廳可購買 Haruka 套票。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">搭乘 JR Haruka 特急 → 京都</div>
+          <div class="item-desc">車程約 80 分鐘，約 20:30 抵達京都車站，辦理入住後輕裝出門。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">藥妝採購</div>
+          <div class="item-desc">京都駅周邊松本清、Welcia，放好行李後先掃一輪再吃飯最有效率。</div>
+        </div>
+      </div>
+
+      <div class="rest-block">
+        <div class="rest-block-header">晚餐選項（擇一）</div>
+        <div class="rest-list">
+          <div class="rest-item">
+            <span class="rest-tag tag-option">候選</span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/夢み家+大阪焼き+京都" target="_blank">Yumemiya 夢み家</a>　大阪燒</span>
+            <span class="rest-info">〜 23:00</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">候選</span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/炭火串焼つじや+京都駅八条口" target="_blank">炭火串焼つじや 八条口店</a>　燒鳥</span>
+            <span class="rest-info">〜 23:00</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">候選</span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/Yakitori+Tsujiya+京都" target="_blank">Yakitori Tsujiya</a>　燒鳥（較遠）</span>
+            <span class="rest-info">〜 22:00</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">輕鬆</span>
+            <span class="rest-name">烏冬麵　車站周邊深夜均可找到</span>
+            <span class="rest-info"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-block">
+        💡 雨天備折傘，八条口出口有便利商店可補傘。建議先放行李 → 逛藥妝 → 晚餐，行程不趕。
+      </div>
+
+      <!-- Unsplash: Kyoto Tower night reflections by Perry Merrity II -->
+      <div class="day-photo">
+        <img
+          src="https://images.unsplash.com/photo-1674388891031-84a63b386947?w=900&auto=format&fit=crop&q=80"
+          alt="京都夜景"
+          onerror="this.src='https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=900&auto=format&fit=crop&q=80'"
+        >
+        <div class="photo-caption">京都 · 入夜抵達</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 02 -->
+  <div class="day-card">
+    <div class="day-meta">
+      <span class="day-num">02</span>
+      <div class="day-date">5/01 FRI</div>
+      <div class="day-weather-badge">
+        <span class="day-weather-icon">🌧️</span>
+        <span class="day-temp">14–20°C</span>
+      </div>
+    </div>
+    <div class="day-inner">
+      <div class="day-title">神社散步・購物・祇園燒肉</div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">早午餐：<a href="https://www.google.com/maps/search/Blue+Bottle+Coffee+京都" target="_blank">Blue Bottle Coffee 京都</a></div>
+          <div class="item-desc">08:00 開門，京町家改裝空間，附近可步行至錦天滿宮、八坂神社一帶晃晃。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">午餐：<a href="https://www.google.com/maps/search/大力邸+京都+壽喜燒" target="_blank">大力邸</a>　和牛壽喜燒</div>
+          <div class="item-desc">11:30 開門，稍早抵達排隊，雨天人潮相對少是好機會。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">13:30 平等寺（狗勾神社）</div>
+          <div class="item-desc">因幡藥師，繪馬上有可愛柴犬圖案，京都人暱稱「狗勾神社」，必拍。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">四條河原町 逛街</div>
+          <div class="item-desc"><a href="https://www.google.com/maps/search/Kyoto+BAL" target="_blank">Kyoto BAL</a>、<a href="https://www.google.com/maps/search/藤井大丸+京都" target="_blank">藤井大丸</a>，雨天室內購物最合適。</div>
+        </div>
+      </div>
+
+      <div class="rest-block">
+        <div class="rest-block-header">晚餐</div>
+        <div class="rest-list">
+          <div class="rest-item">
+            <span class="rest-tag tag-confirmed">✓ 已訂位</span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/Gion+Yakiniku+Gyusho+Shin+京都" target="_blank">Gion Yakiniku Gyusho Shin　祇園牛燒肉</a></span>
+            <span class="rest-info">18:00 入座</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unsplash: Gion evening street by Fabrizio Chiagano -->
+      <div class="day-photo">
+        <img
+          src="https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=900&auto=format&fit=crop&q=80"
+          alt="祇園夜晚街道"
+          onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&auto=format&fit=crop&q=80'"
+        >
+        <div class="photo-caption">祇園 · 先斗町 · 夜間散步</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 03 -->
+  <div class="day-card">
+    <div class="day-meta">
+      <span class="day-num">03</span>
+      <div class="day-date">5/02 SAT</div>
+      <div class="day-weather-badge">
+        <span class="day-weather-icon">🌥️</span>
+        <span class="day-temp">13–21°C</span>
+      </div>
+    </div>
+    <div class="day-inner">
+      <div class="day-title">宇治抹茶 × 伏見酒藏（or 鴨川）</div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">08:08 出發前往宇治</div>
+          <div class="item-desc">從京都駅搭 JR 奈良線約 17 分鐘，班次密集，輕鬆出發。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">宇治散步・抹茶體驗</div>
+          <div class="item-desc"><a href="https://www.google.com/maps/search/中村藤吉本店+宇治" target="_blank">中村藤吉本店</a>（早點去避開排隊）、平等院鳳凰堂、宇治上神社，沿宇治川步行非常舒適。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">下午：視體力選擇</div>
+          <div class="item-desc">
+            <b>精力充沛</b> → 移動<a href="https://www.google.com/maps/search/月桂冠大倉記念館+伏見" target="_blank">伏見酒藏</a>，清酒試飲＋十石舟遊覧。<br>
+            <b>有點廢</b> → 繼續待宇治，傍晚回京都散步<a href="https://www.google.com/maps/search/鴨川+京都" target="_blank">鴨川</a>。
+          </div>
+        </div>
+      </div>
+
+      <div class="note-block">
+        🍶 宇治 ←→ 伏見搭近鐵約 15 分鐘，不算太遠。伏見補充：月桂冠大倉紀念館清酒試飲＋十石舟遊覧水路。
+      </div>
+
+      <!-- Unsplash: Uji river Japan green landscape by Su San Lee -->
+      <div class="day-photo">
+        <img
+          src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=900&auto=format&fit=crop&q=80"
+          alt="宇治抹茶景色"
+          onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&auto=format&fit=crop&q=80'"
+        >
+        <div class="photo-caption">宇治 · 抹茶の里</div>
+      </div>
+
+      <div class="day-narrative">
+        宇治空氣中飄著清新茶香，中村藤吉本店的抹茶凍是在地必吃。若體力允許下午轉伏見，古老酒藏石牆巷弄的氛圍截然不同。兩種節奏任君選擇，今天最難的決定只有一個：走還是懶？
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 04 -->
+  <div class="day-card">
+    <div class="day-meta">
+      <span class="day-num">04</span>
+      <div class="day-date">5/03 SUN</div>
+      <div class="day-weather-badge">
+        <span class="day-weather-icon">🌤️</span>
+        <span class="day-temp">12–20°C</span>
+      </div>
+    </div>
+    <div class="day-inner">
+      <div class="day-title">海之京都一日遊 · 天橋立 × 伊根</div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">08:00 集合出發（KKday 一日遊）</div>
+          <div class="item-desc">乘遊覧船餵海鷗，近距離欣賞伊根舟屋群，這天天氣最好，盡情享受。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M3 17l3-3 4 4 4-8 4 4"/><path d="M21 21H3"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">天橋立 · 伊根舟屋</div>
+          <div class="item-desc">登上傘松公園展望台，倒看天橋立，松林彷彿騰空於海上（日本三景之一）。伊根舟屋依水而建，靜謐迷人。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3"/><path d="M22 17a3 3 0 0 1-3 3H5"/><path d="M22 17V9a3 3 0 0 0-3-3H5"/><path d="M2 6v8"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">17:30 返回京都</div>
+          <div class="item-desc">回程車上可小睡，抵達後輕鬆覓食，不需安排太複雜。</div>
+        </div>
+      </div>
+
+      <div class="rest-block">
+        <div class="rest-block-header">午餐（行程中）・晚餐選項</div>
+        <div class="rest-list">
+          <div class="rest-item">
+            <span class="rest-tag tag-option">午餐</span>
+            <span class="rest-name">天橋立・伊根當地海鮮定食　依行程地點安排</span>
+            <span class="rest-info">在地食堂</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">晚餐</span>
+            <span class="rest-name"><a href="https://www.google.com/maps/search/京都勝牛+八条口" target="_blank">京都勝牛 八條口店</a>　炸牛排</span>
+            <span class="rest-info">車站正對面</span>
+          </div>
+          <div class="rest-item">
+            <span class="rest-tag tag-option">輕鬆</span>
+            <span class="rest-name">疲憊時：拉麵 or 烏冬　車站周邊均可</span>
+            <span class="rest-info"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unsplash: Japan sea coast mountain landscape by Tsuyoshi Kozu -->
+      <div class="day-photo">
+        <img
+          src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=900&auto=format&fit=crop&q=80"
+          alt="天橋立 日本三景"
+          onerror="this.src='https://images.unsplash.com/photo-1480796927426-f609979314bd?w=900&auto=format&fit=crop&q=80'"
+        >
+        <div class="photo-caption">天橋立 · 日本三景之一</div>
+      </div>
+
+      <div class="day-narrative">
+        天橋立如翠綠松林橫跨海灣，在觀景台倒著看，松林化為騰空之橋，絕妙難忘。伊根的舟屋依水而建，木造民家倒映水中，寧靜到讓人不想離開。這天的天氣最好，好好珍惜。
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 05 -->
+  <div class="day-card">
+    <div class="day-meta">
+      <span class="day-num">05</span>
+      <div class="day-date">5/04 MON</div>
+      <div class="day-weather-badge">
+        <span class="day-weather-icon">✈️</span>
+        <span class="day-temp">返程日</span>
+      </div>
+    </div>
+    <div class="day-inner">
+      <div class="day-title">京都 → 大阪 → 返台</div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">早晨：最終採買</div>
+          <div class="item-desc">京都駅伊勢丹地下街，或大阪心齋橋短暫停留，黃金週最後一天人潮大，留足時間。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">京都 → 大阪 → 關西機場</div>
+          <div class="item-desc">黃金週 KIX 安檢排隊時間長，至少提前 2.5 小時抵達機場。</div>
+        </div>
+      </div>
+
+      <div class="item-row">
+        <div class="item-icon"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">13:10 班機起飛 → 15:05 抵台</div>
+          <div class="item-desc">帶上滿滿回憶與戰利品，感謝京都五日，下次再見。</div>
+        </div>
+      </div>
+
+      <!-- Unsplash: Airport departure terminal by Anete Lusina -->
+      <div class="day-photo">
+        <img
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&auto=format&fit=crop&q=80"
+          alt="機場離境"
+          onerror="this.src='https://images.unsplash.com/photo-1483450388369-9ed95738483c?w=900&auto=format&fit=crop&q=80'"
+        >
+        <div class="photo-caption">關西機場 KIX · 13:10 起飛</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAR GUIDE -->
+  <div class="bar-guide">
+    <div class="bar-guide-label">After Hours</div>
+    <h3>深夜酒館指南</h3>
+    <div class="bar-item">
+      <div class="bar-name"><a href="https://www.google.com/maps/search/Sake+Bar+Yoramu+京都" target="_blank">Sake Bar Yoramu</a></div>
+      <div class="bar-desc">以色列老闆精選高品質清酒，不提供調酒，是一場跨越國界的清酒深度旅程。適合 Day 1 抵達後或 Day 2 晚餐後造訪。</div>
+    </div>
+    <div class="bar-item">
+      <div class="bar-name"><a href="https://www.google.com/maps/search/Kyoto+Beer+Lab" target="_blank">Kyoto Beer Lab</a></div>
+      <div class="bar-desc">氣氛放鬆的在地精釀吧，以抹茶、焙茶等京都特色原料釀造，最適合 Day 3 宇治回來後卸下疲憊。</div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  2026 &nbsp;·&nbsp; KANSAI GOLDEN WEEK &nbsp;·&nbsp; 關西黃金週深度旅行手冊
+</footer>
+
+</body>
+</html>
