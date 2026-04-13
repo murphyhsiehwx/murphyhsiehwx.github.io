@@ -76,7 +76,8 @@
       top: 56px; left: 10%; right: 10%;
       height: 1px; background: var(--divider); z-index: 0;
     }
-    .tl-day { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 4px; }
+    .tl-day { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 4px; text-decoration: none; color: inherit; cursor: pointer; }
+    .tl-day:hover .tl-num { color: var(--gold-light); transition: 0.3s; }
     .tl-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
     .tl-date { font-size: 10px; color: var(--ink-mute); letter-spacing: 0.1em; margin-bottom: 10px; text-align: center; }
     .tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: #fff; margin-bottom: 12px; }
@@ -186,7 +187,7 @@
   <div class="overview-inner">
     <div class="section-label">Five-Day Overview</div>
     <div class="timeline">
-      <div class="tl-day">
+      <a href= class="tl-day">
         <div class="tl-num">01</div>
         <div class="tl-date">4/30 四</div>
         <div class="tl-dot"></div>
@@ -194,8 +195,8 @@
         <div class="tl-temp">15–22°C</div>
         <div class="tl-label">抵達京都</div>
         <div class="tl-sub">KIX → 京都<br>晚餐・藥妝</div>
-      </div>
-      <div class="tl-day">
+      </a>
+      <a href class="tl-day">
         <div class="tl-num">02</div>
         <div class="tl-date">5/01 五</div>
         <div class="tl-dot"></div>
@@ -203,8 +204,8 @@
         <div class="tl-temp">14–20°C</div>
         <div class="tl-label">神社・購物</div>
         <div class="tl-sub">藍瓶咖啡<br>祇園燒肉✓</div>
-      </div>
-      <div class="tl-day">
+      </a>
+      <a href class="tl-day">
         <div class="tl-num">03</div>
         <div class="tl-date">5/02 六</div>
         <div class="tl-dot"></div>
@@ -212,8 +213,8 @@
         <div class="tl-temp">13–21°C</div>
         <div class="tl-label">宇治・伏見</div>
         <div class="tl-sub">抹茶・清酒<br>or 鴨川散步</div>
-      </div>
-      <div class="tl-day">
+      </a>
+      <a href class="tl-day">
         <div class="tl-num">04</div>
         <div class="tl-date">5/03 日</div>
         <div class="tl-dot"></div>
@@ -221,8 +222,8 @@
         <div class="tl-temp">12–20°C</div>
         <div class="tl-label">海之京都</div>
         <div class="tl-sub">天橋立<br>伊根舟屋</div>
-      </div>
-      <div class="tl-day">
+      </a>
+      <a href class="tl-day">
         <div class="tl-num">05</div>
         <div class="tl-date">5/04 一</div>
         <div class="tl-dot"></div>
@@ -230,7 +231,7 @@
         <div class="tl-temp">返程日</div>
         <div class="tl-label">京都→大阪</div>
         <div class="tl-sub">13:10<br>班機起飛</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -238,7 +239,7 @@
 <main class="guide-body">
   <div class="section-label">Day by Day Itinerary</div>
 
-  <div class="day-card">
+  <div class="day-card" id="day-01">
     <div class="day-meta">
       <span class="day-num">01</span>
       <div class="day-date">4/30 THU</div>
@@ -315,7 +316,7 @@
     </div>
   </div>
 
-  <div class="day-card">
+  <div class="day-card" id="day-02">
     <div class="day-meta">
       <span class="day-num">02</span>
       <div class="day-date">5/01 FRI</div>
@@ -381,7 +382,7 @@
     </div>
   </div>
 
-  <div class="day-card">
+  <div class="day-card" id="day-03">
     <div class="day-meta">
       <span class="day-num">03</span>
       <div class="day-date">5/02 SAT</div>
@@ -439,7 +440,7 @@
     </div>
   </div>
 
-  <div class="day-card">
+  <div class="day-card" id="day-04">
     <div class="day-meta">
       <span class="day-num">04</span>
       <div class="day-date">5/03 SUN</div>
@@ -511,7 +512,7 @@
     </div>
   </div>
 
-  <div class="day-card">
+  <div class="day-card" id="day-05">
     <div class="day-meta">
       <span class="day-num">05</span>
       <div class="day-date">5/04 MON</div>
