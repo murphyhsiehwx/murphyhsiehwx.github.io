@@ -76,8 +76,12 @@
       top: 56px; left: 10%; right: 10%;
       height: 1px; background: var(--divider); z-index: 0;
     }
-    .tl-day { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 4px; text-decoration: none; color: inherit; cursor: pointer; }
-    .tl-day:hover .tl-num { color: var(--gold-light); transition: 0.3s; }
+    
+    /* 更新後的 tl-day 樣式（改為超連結樣式並增加互動感） */
+    a.tl-day { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 1; padding: 0 4px; text-decoration: none; color: inherit; cursor: pointer; transition: background-color 0.2s; }
+    a.tl-day:hover { background-color: rgba(184,147,90,0.04); border-radius: 8px; }
+    a.tl-day:hover .tl-num { color: var(--gold-light); transition: 0.3s; }
+
     .tl-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 4px; }
     .tl-date { font-size: 10px; color: var(--ink-mute); letter-spacing: 0.1em; margin-bottom: 10px; text-align: center; }
     .tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: #fff; margin-bottom: 12px; }
@@ -90,7 +94,7 @@
     .guide-body { max-width: 780px; margin: 0 auto; padding: 60px 24px 100px; }
 
     /* DAY CARD */
-    .day-card { margin-bottom: 64px; display: grid; grid-template-columns: 80px 1fr; gap: 0 36px; }
+    .day-card { margin-bottom: 64px; display: grid; grid-template-columns: 80px 1fr; gap: 0 36px; scroll-margin-top: 40px; }
     .day-meta { text-align: right; padding-right: 36px; border-right: 1px solid var(--divider); padding-top: 4px; }
     .day-num { font-family: 'Cormorant Garamond', serif; font-size: 3.4rem; font-weight: 300; color: var(--gold); line-height: 1; display: block; }
     .day-date { font-size: 10.5px; color: var(--ink-mute); letter-spacing: 0.14em; margin-top: 6px; white-space: nowrap; }
@@ -160,7 +164,7 @@
     @media (max-width: 640px) {
       .timeline { flex-wrap: wrap; }
       .timeline::before { display: none; }
-      .tl-day { flex: 0 0 33.33%; margin-bottom: 24px; }
+      a.tl-day { flex: 0 0 33.33%; margin-bottom: 24px; }
       .day-card { grid-template-columns: 1fr; gap: 0; }
       .day-meta { text-align: left; border-right: none; border-bottom: 1px solid var(--divider); padding-right: 0; padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: baseline; gap: 14px; }
       .day-num { font-size: 2.2rem; }
@@ -187,7 +191,7 @@
   <div class="overview-inner">
     <div class="section-label">Five-Day Overview</div>
     <div class="timeline">
-      <a href= class="tl-day">
+      <a href="#day-01" class="tl-day">
         <div class="tl-num">01</div>
         <div class="tl-date">4/30 四</div>
         <div class="tl-dot"></div>
@@ -196,7 +200,7 @@
         <div class="tl-label">抵達京都</div>
         <div class="tl-sub">KIX → 京都<br>晚餐・藥妝</div>
       </a>
-      <a href class="tl-day">
+      <a href="#day-02" class="tl-day">
         <div class="tl-num">02</div>
         <div class="tl-date">5/01 五</div>
         <div class="tl-dot"></div>
@@ -205,7 +209,7 @@
         <div class="tl-label">神社・購物</div>
         <div class="tl-sub">藍瓶咖啡<br>祇園燒肉✓</div>
       </a>
-      <a href class="tl-day">
+      <a href="#day-03" class="tl-day">
         <div class="tl-num">03</div>
         <div class="tl-date">5/02 六</div>
         <div class="tl-dot"></div>
@@ -214,7 +218,7 @@
         <div class="tl-label">宇治・伏見</div>
         <div class="tl-sub">抹茶・清酒<br>or 鴨川散步</div>
       </a>
-      <a href class="tl-day">
+      <a href="#day-04" class="tl-day">
         <div class="tl-num">04</div>
         <div class="tl-date">5/03 日</div>
         <div class="tl-dot"></div>
@@ -223,7 +227,7 @@
         <div class="tl-label">海之京都</div>
         <div class="tl-sub">天橋立<br>伊根舟屋</div>
       </a>
-      <a href class="tl-day">
+      <a href="#day-05" class="tl-day">
         <div class="tl-num">05</div>
         <div class="tl-date">5/04 一</div>
         <div class="tl-dot"></div>
@@ -373,9 +377,9 @@
 
       <div class="day-photo">
         <img
-          src="https://images.unsplash.com/photo-1574060275764-4e3e046ff29c"
+          src="https://images.unsplash.com/photo-MsMISAIe8Qw?w=900&auto=format&fit=crop&q=80"
           alt="雨中撐傘漫步的街道"
-          onerror="this.src='https://images.unsplash.com/photo-1574060275764-4e3e046ff29c'"
+          onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&auto=format&fit=crop&q=80'"
         >
         <div class="photo-caption">漫步京都 · 雨中即景</div>
       </div>
@@ -427,9 +431,9 @@
 
       <div class="day-photo">
         <img
-          src="https://images.unsplash.com/photo-1581536763020-d2d7cfdd4df6"
-          alt="伏見乘船遊覽"
-          onerror="this.src='https://images.unsplash.com/photo-1581536763020-d2d7cfdd4df6'"
+          src="https://images.unsplash.com/photo-wJvUBkLU0pA?w=900&auto=format&fit=crop&q=80"
+          alt="日間乘船遊覽"
+          onerror="this.src='https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=900&auto=format&fit=crop&q=80'"
         >
         <div class="photo-caption">宇治 · 水路風光</div>
       </div>
